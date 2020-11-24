@@ -17,7 +17,7 @@ module.exports = function (constraints, cb) {
     }
 
     // treat lack of browser support like an error
-    if (typeof navigator === 'undefined' || !navigator.getUserMedia) {
+    if (typeof navigator === 'undefined' || (!navigator.getUserMedia && !navigator.mediaDevices.getUserMedia)) {
         // throw proper error per spec
         error = new Error('MediaStreamError');
         error.name = 'NotSupportedError';
